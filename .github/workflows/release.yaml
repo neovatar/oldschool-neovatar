@@ -20,7 +20,7 @@ jobs:
         uses: ffurrer2/extract-release-notes@v2
         with:
           changelog_file: CHANGELOG.md
-          releasenotes_file: build/RELEASE.md
+          release_notes_file: build/RELEASE.md
 
       # Create a release for this specific version
       - name: Update Release with Files
