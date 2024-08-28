@@ -1,0 +1,14 @@
+{
+	"name": "oldschool-neovatar",
+	"id": "7yNesAFm",
+	"version": "0.1.0",
+	"author": "https://github.com/neovatar",
+	"keywords": "",
+	"allow_3rd_party_mapping_software_to_read": true,
+	"custom_color_overrides": {
+		"enabled": true,
+		"min_redness": 0.1,
+		"min_saturation": 0,
+		"red_tolerance": 0.04
+	}
+}

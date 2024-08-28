@@ -1,0 +1,35 @@
+name: Release dungeondraft pack
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build dungeondraft pack
+        run: build.sh
+
+      - name: Extract release notes
+        id: extract-release-notes
+        uses: ffurrer2/extract-release-notes@v2
+        with:
+          changelog_file: CHANGELOG.md
+          releasenotes_file: build/RELEASE.md
+
+      # Create a release for this specific version
+      - name: Update Release with Files
+        id: create_version_release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true # Set this to false if you want to prevent updating existing releases
+          name: ${{ github.event.release.name }}
+          draft: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "./build/*"
+          tag: ${{ github.event.release.tag_name }}
+          bodyFile: build/RELEASE.md
