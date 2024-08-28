@@ -33,6 +33,6 @@ jobs:
           name: ${{ github.event.release.name }}
           draft: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: "./build/*"
+          artifacts: "./build/oldschool-neovatar.zip"
           tag: ${{ github.event.release.tag_name }}
           bodyFile: ./build/RELEASE.md
