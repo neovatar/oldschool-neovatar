@@ -3,14 +3,13 @@ name: Release dungeondraft pack
 on:
   push:
     tags:
-      - "v*"
-
-permissions:
-  contents: write
+      - "v*.*.*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -36,4 +35,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "./build/*"
           tag: ${{ github.event.release.tag_name }}
-          bodyFile: build/RELEASE.md
+          bodyFile: ./build/RELEASE.md
